@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - GPTImage2</title>
+    <style>
+        :root {
+            --primary: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --secondary: #3B82F6;
+            --accent: #06B6D4;
+            --bg-dark: #0F0F1A;
+            --bg-card: #1A1A2E;
+            --bg-card-hover: #252542;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A1A1AA;
+            --text-muted: #71717A;
+            --gradient-primary: linear-gradient(135deg, #8B5CF6 0%, #3B82F6 50%, #06B6D4 100%);
+            --gradient-bg: linear-gradient(180deg, #0F0F1A 0%, #1A1A2E 100%);
+            --border-color: rgba(139, 92, 246, 0.3);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--gradient-bg);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(15, 15, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 0;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo {
+            font-size: 1.5rem; font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-cta {
+            background: var(--gradient-primary); color: white; padding: 10px 24px;
+            border-radius: 8px; text-decoration: none; font-weight: 600;
+        }
+        .hero {
+            padding: 160px 20px 80px;
+            text-align: center;
+            background: var(--bg-dark);
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 20px; }
+        .hero p { color: var(--text-secondary); font-size: 1.2rem; max-width: 700px; margin: 0 auto; }
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+            padding: 80px 0;
+        }
+        .about-content h2 { font-size: 2rem; margin-bottom: 24px; }
+        .about-content p { color: var(--text-secondary); margin-bottom: 20px; font-size: 1.05rem; }
+        .about-visual {
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: 20px; padding: 60px; text-align: center;
+        }
+        .about-visual-icon { font-size: 4rem; margin-bottom: 20px; }
+        .about-visual p { color: var(--text-muted); }
+        .values-section { padding: 80px 0; background: var(--bg-card); }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-badge {
+            display: inline-block; padding: 6px 16px;
+            background: rgba(139, 92, 246, 0.1); border: 1px solid var(--border-color);
+            border-radius: 50px; font-size: 0.85rem; color: var(--primary); margin-bottom: 16px;
+        }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 16px; }
+        .section-header p { color: var(--text-secondary); font-size: 1.1rem; }
+        .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .value-card {
+            background: var(--bg-dark); border: 1px solid var(--border-color);
+            border-radius: 16px; padding: 32px; text-align: center;
+            transition: all 0.3s;
+        }
+        .value-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .value-icon { font-size: 3rem; margin-bottom: 20px; }
+        .value-card h3 { font-size: 1.3rem; margin-bottom: 12px; }
+        .value-card p { color: var(--text-secondary); font-size: 0.95rem; }
+        .mission-section { padding: 80px 0; }
+        .mission-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .mission-content h2 { font-size: 2.5rem; margin-bottom: 24px; }
+        .mission-content p { color: var(--text-secondary); font-size: 1.15rem; line-height: 1.9; }
+        .tech-section { padding: 80px 0; background: var(--bg-card); }
+        .tech-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .tech-item {
+            background: var(--bg-dark); border: 1px solid var(--border-color);
+            border-radius: 12px; padding: 24px; text-align: center;
+        }
+        .tech-item h4 { font-size: 1rem; margin-bottom: 8px; }
+        .tech-item p { color: var(--text-muted); font-size: 0.85rem; }
+        footer {
+            background: var(--bg-card); border-top: 1px solid var(--border-color);
+            padding: 40px 0; text-align: center;
+        }
+        footer p { color: var(--text-muted); font-size: 0.9rem; }
+        .footer-links { margin-top: 20px; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 16px; }
+        .footer-links a:hover { color: var(--primary); }
+        @media (max-width: 1024px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .values-grid { grid-template-columns: repeat(2, 1fr); }
+            .tech-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2rem; }
+            .values-grid, .tech-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">GPTImage2</div>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="#mission">我们的使命</a></li>
+                <li><a href="#values">核心价值观</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+            </ul>
+            <a href="index.html#cta" class="nav-cta">开始使用</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>关于 GPTImage2</h1>
+            <p>我们致力于让 AI 图像生成技术触手可及，帮助每个人轻松创造惊艳的视觉作品。</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>让创意无限延伸</h2>
+                    <p>GPTImage2 是基于 OpenAI 最新一代图像生成技术的 AI 工具。我们相信，强大的图像生成能力不应该只掌握在专业人士手中，而应该让每个有创意想法的人都能轻松实现。</p>
+                    <p>无论是设计师、艺术家、营销人员，还是普通用户，GPTImage2 都能帮助您将脑海中的想象快速转化为惊艳的视觉作品。我们的使命是降低创意表达的门槛，让 AI 成为每个人手中的创意伙伴。</p>
+                </div>
+                <div class="about-visual">
+                    <div class="about-visual-icon">🎨</div>
+                    <p>AI 驱动的创意革命</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section" id="values">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">核心价值观</span>
+                <h2>我们坚持的原则</h2>
+                <p>这些价值观指引着我们每一次决策和产品迭代</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🚀</div>
+                    <h3>简单易用</h3>
+                    <p>我们相信最好的技术应该是无感知的。GPTImage2 让您无需学习复杂的操作，通过简单的文本描述即可生成专业级图像。</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">💎</div>
+                    <h3>品质优先</h3>
+                    <p>我们从不妥协于质量。每一张生成的图像都经过精心优化，确保达到最高的画质标准，满足专业使用需求。</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🔒</div>
+                    <h3>隐私保护</h3>
+                    <p>您的创意属于您。我们承诺保护您的隐私，不会存储或分享您生成的图像内容。</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🌍</div>
+                    <h3>普惠包容</h3>
+                    <p>AI 技术应该服务于全人类。我们努力让 GPTImage2 价格亲民，让每个人都能享受 AI 带来的创意便利。</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3>快速响应</h3>
+                    <p>时间就是创意。我们优化每一个环节，确保您能在最短时间内获得高质量的图像成果。</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>用户至上</h3>
+                    <p>您的反馈是我们进步的阶梯。我们认真倾听每一位用户的声音，持续改进产品体验。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mission-section" id="mission">
+        <div class="container">
+            <div class="mission-content">
+                <span class="section-badge">我们的使命</span>
+                <h2> democratize creativity</h2>
+                <p>我们相信，当每个人都有能力轻松创作高质量的视觉内容时，世界会变得更加丰富多彩。GPTImage2 正是这一愿景的体现——通过强大的 AI 技术，我们正在重新定义创意的边界，让曾经只有专业设计师才能完成的工作，现在每个人都能完成。</p>
+                <p>从社交媒体内容创作到商业广告设计，从概念艺术到产品原型，GPTImage2 正在帮助各行各业的人们将他们的创意想法变为现实。我们为此感到骄傲，并将继续推动 AI 图像生成技术的发展，让更多人能体验到这项技术带来的便利。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">技术架构</span>
+                <h2>支撑 GPTImage2 的技术</h2>
+                <p>基于 OpenAI 最先进的图像生成模型构建</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4>OpenAI GPT-4o</h4>
+                    <p>强大的多模态基础模型</p>
+                </div>
+                <div class="tech-item">
+                    <h4>4K 分辨率支持</h4>
+                    <p>超高清图像输出</p>
+                </div>
+                <div class="tech-item">
+                    <h4>30秒级生成</h4>
+                    <p>极速图像创作</p>
+                </div>
+                <div class="tech-item">
+                    <h4>全局 CDN</h4>
+                    <p>全球快速访问</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 GPTImage2. 保留所有权利。</p>
+            <div class="footer-links">
+                <a href="index.html">首页</a>
+                <a href="about.html">关于我们</a>
+                <a href="contact.html">联系我们</a>
+                <a href="privacy.html">隐私政策</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
